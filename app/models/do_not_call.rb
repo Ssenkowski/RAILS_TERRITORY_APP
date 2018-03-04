@@ -1,0 +1,2 @@
+class DoNotCall < ApplicationRecord
+end
