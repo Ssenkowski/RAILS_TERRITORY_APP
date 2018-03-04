@@ -1,0 +1,2 @@
+class HouseToHouseRecord < ApplicationRecord
+end
