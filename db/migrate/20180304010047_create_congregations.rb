@@ -12,6 +12,7 @@ class CreateCongregations < ActiveRecord::Migration[5.1]
       t.datetime :wednesday_evening_service_meeting_date_time
       t.string :scheduled_public_talk_title
       t.datetime :special_talk_date_time
+      t.string :special_talk_title
       t.datetime :memorial_date_time
       t.datetime :regional_convention_date_time
       t.string :regional_convention_theme
