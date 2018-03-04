@@ -1,0 +1,2 @@
+class PublisherTerritory < ApplicationRecord
+end
