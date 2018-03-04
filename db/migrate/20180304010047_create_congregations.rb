@@ -9,8 +9,10 @@ class CreateCongregations < ActiveRecord::Migration[5.1]
       t.string :scheduled_public_talk_title
       t.datetime :special_talk_date_time
       t.datetime :memorial_date_time
-      t.datetime :CO_visit_start_date
-      t.datetime :CO_visit_end_date
+      t.datetime :regional_convention_date_time
+      t.string :regional_convention_theme
+      t.datetime :co_visit_start_date
+      t.datetime :co_visit_end_date
       t.string :thirty_hour_aux_months
 
       t.timestamps

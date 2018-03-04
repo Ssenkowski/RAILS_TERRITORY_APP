@@ -1,4 +1,4 @@
-<% render partial: 'layouts/_header' #Should see current publisher name and congregation%>
+<% render partial: 'layouts/_header' #Should see current publisher name and congregation, local news%>
 
 <%= @current_publisher.territories.each do |territory| %>
 Territory: <%= territory.designation %> <%= territory.number %> <%= territory.campaign_work? %>

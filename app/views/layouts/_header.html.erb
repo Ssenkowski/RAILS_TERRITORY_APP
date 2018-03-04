@@ -1,0 +1,10 @@
+<h3>Welcome!:</h3> <h4><%= @publisher.first_name %> <%= @publisher.last_name %></h4>
+
+Your congregation information:
+<%= @congregation.name %>
+<%= @congregation.address %><%= @congregation.street %>
+<%= @congregation.meeting_times %>
+<%= @congregation.scheduled_public_talk_title %>
+<%= @congregation.co_visit_start_date %> thru <%= @congregation.co_visit_end_date %>
+
+Public News!: <%= @congregation.special_talk_date_time %> <%= @congregation.memorial_date_time %> <%= @congregation.regional_convention_date_time %> <%= @congregation.regional_convention_theme %>
