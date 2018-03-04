@@ -6,6 +6,10 @@ class CreateCongregations < ActiveRecord::Migration[5.1]
       t.string :street
       t.integer :number
       t.datetime :meeting_times
+      t.datetime :saturday_field_service_start_time
+      t.boolean :saturday_meet_at_the_hall?
+      t.boolean :wednesday_evening_service_meeting?
+      t.datetime :wednesday_evening_service_meeting_date_time
       t.string :scheduled_public_talk_title
       t.datetime :special_talk_date_time
       t.datetime :memorial_date_time
