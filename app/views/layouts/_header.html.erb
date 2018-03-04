@@ -8,14 +8,14 @@ Your congregation information:
 <%= @congregation.co_visit_start_date %> thru <%= @congregation.co_visit_end_date %>
 
 News!: <%= @congregation.special_talk_date_time %> <%= @congregation.memorial_date_time %> <%= @congregation.regional_convention_date_time %> <%= @congregation.regional_convention_theme %>
-<%= if @congregation.saturday_meet_at_the_hall %>
-<%= @congregation.saturday_field_service_start_time %>
+<%= if @congregation.saturday_meet_at_the_hall #Should everyone meet at the hall saturday?%>
+<%= @congregation.saturday_field_service_start_time #then show when %>
 <%= end %>
 
-<%= if @congregation.wednesday_evening_service_meeting? %>
-<%= @congregation.wednesday_evening_service_meeting_date_time %>
+<%= if @congregation.wednesday_evening_service_meeting? #Is there a service meeting wednesday?%>
+<%= @congregation.wednesday_evening_service_meeting_date_time #then show when %>
 <%= end %>
 
 <%= if @congregation.regional_convention_date_time <= Time.zone.now.to_date # - less than 4 months from todays date%>
-<%= @congregation.regional_convention_theme %>
+<%= @congregation.regional_convention_theme #show convention theme title %>
 <%= end %>

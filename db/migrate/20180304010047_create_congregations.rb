@@ -18,6 +18,8 @@ class CreateCongregations < ActiveRecord::Migration[5.1]
       t.datetime :co_visit_start_date
       t.datetime :co_visit_end_date
       t.string :thirty_hour_aux_months
+      t.integer :publisher_id
+      t.integer :territory_id
 
       t.timestamps
     end
