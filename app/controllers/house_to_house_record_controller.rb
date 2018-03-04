@@ -1,0 +1,2 @@
+class HouseToHouseRecordController < ApplicationController
+end

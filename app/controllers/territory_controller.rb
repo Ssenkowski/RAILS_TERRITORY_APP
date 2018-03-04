@@ -1,0 +1,2 @@
+class TerritoryController < ApplicationController
+end

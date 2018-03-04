@@ -1,0 +1,2 @@
+class DoNotCallController < ApplicationController
+end
