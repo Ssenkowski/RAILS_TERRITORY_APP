@@ -10,6 +10,7 @@ class CreateTerritories < ActiveRecord::Migration[5.1]
       t.integer :house_to_house_record_id
       t.integer :do_not_call_id
       t.date :last_completed
+      t.boolean :lost?
 
       t.timestamps
     end
