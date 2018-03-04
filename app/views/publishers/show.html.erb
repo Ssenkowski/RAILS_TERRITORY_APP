@@ -1,0 +1,5 @@
+<% render partial: 'layouts/_header' #Should see current publisher name and congregation%>
+
+<%= @current_publisher.territories.each do |territory| %>
+Territory: <%= territory.designation %> <%= territory.number %> <%= territory.campaign_work? %>
+House to House Record: <%= territory.house_to_house_record_id %>
