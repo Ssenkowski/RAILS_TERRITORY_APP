@@ -7,8 +7,10 @@ class DoNotCallController < ApplicationController
 
   def create
     @do_not_call = Do_Not_Call.create(do_not_call_params)
+    @territory = Territory.find_by_id(params[:territory_id])
+    #Create the do_not_call and redirect to the associated do not calls territory.
 
-    redirect_to 'do_not_call/index'
+    redirect_to "territory/#{@territory}"
   end
 
   def show
