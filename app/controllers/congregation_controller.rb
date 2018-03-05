@@ -7,7 +7,16 @@ class CongregationController < ApplicationController
 
   def index
     #Allow all users to see this page
-    @congregation = Publisher.find_by_id(current_user.id).congregation_id
+    @congregations = Congregation.all
+  end
+
+  def edit
+    @congregation = Congregation.find_by_id[:id]
+
+  end
+
+  def show
+    @congregation = Congregation.find_by_id[:id]
   end
 
   private

@@ -11,7 +11,10 @@ class PublisherController < ApplicationController
   end
 
   def show
-    @publisher = Publisher.find_by_id(params[:id])
+    #Display the current_user and congregation news throught the '_header' partial.
+    @publisher = Publisher.find_by_id(params[:publisher_id])
+    @territory = Territory.find_by_id(@publisher.territory_id)
+    current_congregation
   end
 
   private
