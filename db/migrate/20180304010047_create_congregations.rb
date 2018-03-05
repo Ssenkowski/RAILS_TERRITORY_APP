@@ -2,9 +2,9 @@ class CreateCongregations < ActiveRecord::Migration[5.1]
   def change
     create_table :congregations do |t|
       t.string :name
+      t.integer :number
       t.integer :address
       t.string :street
-      t.integer :number
       t.datetime :meeting_times
       t.datetime :saturday_field_service_start_time
       t.boolean :saturday_meet_at_the_hall?
