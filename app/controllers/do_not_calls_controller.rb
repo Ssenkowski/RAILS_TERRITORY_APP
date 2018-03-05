@@ -1,4 +1,4 @@
-class DoNotCallController < ApplicationController
+class DoNotCallsController < ApplicationController
 
   def index
     @do_not_calls = Do_Not_Call.all

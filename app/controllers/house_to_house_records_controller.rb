@@ -1,4 +1,4 @@
-class HouseToHouseRecordController < ApplicationController
+class HouseToHouseRecordsController < ApplicationController
   def index
     @house_to_house_records = House_to_house_record.all
     #List all the do not calls grouped by territory and orderd by address.

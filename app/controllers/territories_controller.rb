@@ -1,4 +1,4 @@
-class TerritoryController < ApplicationController
+class TerritoriesController < ApplicationController
 
   def index
       #Show all the territories

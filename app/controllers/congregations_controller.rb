@@ -1,22 +1,27 @@
-class CongregationController < ApplicationController
-
-  def create
-    #Only permit an admin to create a congregation
-    @congregation = Congregation.create(congregation_params)
-  end
-
+class CongregationsController < ApplicationController
   def index
     #Allow all users to see this page
     @congregations = Congregation.all
   end
 
+  def new
+    @congregation = Congregation.new
+  end
+
+  def create
+    #Only permit an admin to create a congregation
+    @congregation = Congregation.create(congregation_params)
+
+    redirect_to 'congregations/show'
+  end
+
   def edit
-    @congregation = Congregation.find_by_id[:id]
+    @congregation = Congregation.find_by_id(params[:id])
 
   end
 
   def show
-    @congregation = Congregation.find_by_id[:id]
+    @congregation = Congregation.find_by_id(params[:id])
   end
 
   private

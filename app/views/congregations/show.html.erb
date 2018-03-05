@@ -1,0 +1,5 @@
+<h2> <%= @congregation.name %> Congregation  #<%= @congregation.number %></h2>
+<h3> Address: <%=@congregation.address%> <%=@congregation.street%> </h3>
+
+Add a congregation publisher: <%= link_to 'Add a publisher', new_publisher_path %><br>
+Add a congregation territory: <%= link_to 'Add a territory', new_territory_path %>
