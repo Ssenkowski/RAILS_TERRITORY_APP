@@ -19,7 +19,7 @@ class TerritoriesController < ApplicationController
 
   def show
     #show an individual territory
-    @territory = Territory.find_by_id([:id])
+    @territory = Territory.find_by_id(params[:id])
   end
 
   private
