@@ -7,18 +7,17 @@ class PublishersController < ApplicationController
 
   def new
     @publisher = Publisher.new(params[:id])
-    binding.pry
   end
 
   def create
     #Only permit an admin to create a congregation
     @publisher = Publisher.create(publisher_params[:id])
-    binding.pry
 
     redirect_to 'publishers/show'
   end
 
   def show
+
     #Display the current_user and congregation news throught the '_header' partial.
     @publisher = Publisher.find_by_id(params[:id])
     #if params[:territory_id]
