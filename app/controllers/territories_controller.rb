@@ -11,7 +11,10 @@ class TerritoriesController < ApplicationController
 
   def create
     @territory = Territory.create(territory_params)
+    @congregations = Congregation.all
     binding.pry
+    @territory.congregation_id = params[:territory][:congregation_id][1]
+    @territory.save
     redirect_to "territories/#{@territory.id}"
   end
 
@@ -24,6 +27,6 @@ class TerritoriesController < ApplicationController
   private
 
   def territory_params
-    params.required(:territory).permit(:number, :designation)
+    params[:territory].permit(:number, :designation)
   end
 end

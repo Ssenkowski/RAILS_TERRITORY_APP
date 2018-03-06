@@ -16,7 +16,6 @@ class PublishersController < ApplicationController
     @congregations = Congregation.all
     @publisher.congregation_id = params[:publisher][:congregation_id][1]
     @publisher.save
-
     redirect_to "publishers/#{@publisher.id}"
   end
 

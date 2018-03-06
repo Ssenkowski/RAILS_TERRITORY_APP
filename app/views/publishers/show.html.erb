@@ -1,6 +1,6 @@
 Welcome <%= @publisher.first_name %> <%= @publisher.last_name %>!
 
-Sign out a Territory
+<%= link_to "Sign out a Territory", new_territory_path %>
 
 <%= form_for @publisher do |f| %>
 <%= f.collection_check_boxes(:territory_id, Territory.all, :id, :number) %>

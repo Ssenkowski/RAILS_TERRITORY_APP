@@ -3,6 +3,9 @@
 
 <%= form_for @territory do |f| %>
   <% designations = ['Residential', 'Business', 'Writing'] %>
+  <%=f.collection_check_boxes(:congregation_id, Congregation.all, :id, :name) %>
+  <br>
+  <br>
   <%=f.label :number %>
   <%=f.number_field :number %>
   <br>

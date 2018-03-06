@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180306003005) do
+ActiveRecord::Schema.define(version: 20180306180742) do
 
   create_table "congregations", force: :cascade do |t|
     t.string "name"
@@ -78,14 +78,11 @@ ActiveRecord::Schema.define(version: 20180306003005) do
     t.string "designation"
     t.string "street_names"
     t.date "sign_out_date"
-    t.integer "publisher_id"
-    t.boolean "campaign_work?"
-    t.integer "house_to_house_record_id"
-    t.integer "do_not_calls_id"
     t.date "completed_date"
     t.boolean "card_lost?"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "congregation_id"
   end
 
   create_table "users", force: :cascade do |t|
