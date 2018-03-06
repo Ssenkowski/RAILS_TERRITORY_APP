@@ -10,6 +10,12 @@ class Publisher < ApplicationRecord
     @publisher.territory_id = @territory.id
   end
 
+  def remove_territory
+    @publisher = Publisher.find_by_id(current_user.publisher_id)
+    @publisher.territory_id.destroy #when a terrtiory is complete remove the territory from the users list of signed out territories
+    @publisher.save
+  end
+
   def change_congregation
     @publisher = Publisher.find_by_id(current_user.publisher_id)
     @publisher.congregation_id = params([:congregation_id])
