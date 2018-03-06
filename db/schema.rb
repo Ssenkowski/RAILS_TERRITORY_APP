@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180305215444) do
+ActiveRecord::Schema.define(version: 20180306003005) do
 
   create_table "congregations", force: :cascade do |t|
     t.string "name"
@@ -70,6 +70,7 @@ ActiveRecord::Schema.define(version: 20180305215444) do
     t.datetime "your_saturday_field_service_group_start_time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
   end
 
   create_table "territories", force: :cascade do |t|

@@ -3,18 +3,18 @@
 <%= form_for @congregation do |f| %>
   <%=f.label :name %>
   <%=f.text_field :name %>
-
+  <br>
   <%=f.label :number %>
   <%=f.text_field :number %>
-
+  <br>
   <%=f.label :address %>
   <%=f.text_field :address %>
-
+  <br>
   <%=f.label :street %>
   <%=f.text_field :street %>
-
+  <br>
   <%=f.label :meeting_times %>
   <%=f.text_field :meeting_times %>
-
+  <br>
   <%= f.submit "Add Congregation"%>
 <%end%>
