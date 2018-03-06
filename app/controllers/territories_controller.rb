@@ -5,8 +5,14 @@ class TerritoriesController < ApplicationController
       @territories = Territory.all
   end
 
+  def new
+    @territory = Territory.new
+  end
+
   def create
     @territory = Territory.create(territory_params)
+    binding.pry
+    redirect_to "territories/#{@territory.id}"
   end
 
   def show
@@ -18,6 +24,6 @@ class TerritoriesController < ApplicationController
   private
 
   def territory_params
-    params[:territory].permit(:number, :designation, :street_names, :sign_out_date, :publisher_name, :campaign_work?, :house_to_house_record_id, :do_not_calls_id, :completed_date, :card_lost?)
+    params.required(:territory).permit(:number, :designation)
   end
 end

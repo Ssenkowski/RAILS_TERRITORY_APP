@@ -1,4 +1,5 @@
 <h2> Add a new Publisher </h2>
+<br>
 
 <%= form_for @publisher do |f| %>
   <%=f.label :username %>
@@ -12,6 +13,10 @@
   <br>
   <%=f.label :service_group %>
   <%=f.number_field :service_group %>
+  <br>
+  <br>
+  <%=f.collection_check_boxes(:congregation_id, Congregation.all, :id, :name) %>
+  <br>
   <br>
   <%= f.submit "Add Publisher"%>
 <%end%>

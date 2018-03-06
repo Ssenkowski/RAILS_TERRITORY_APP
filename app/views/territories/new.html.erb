@@ -1,0 +1,18 @@
+<h2> Add a new Territory </h2>
+<br>
+
+<%= form_for @territory do |f| %>
+  <% designations = ['Residential', 'Business', 'Writing'] %>
+  <%=f.label :number %>
+  <%=f.number_field :number %>
+  <br>
+  <br>
+  <%=f.label 'Territory Designation:' %>
+  <% designations.each do |designation| %>
+  <%= f.check_box :designation, { multiple: false}, designation, false %>
+  <%= f.label "#{designation}" %>
+  <% end %>
+  <br>
+  <br>
+  <%= f.submit "Add Territory"%>
+<%end%>

@@ -7,13 +7,17 @@ class PublishersController < ApplicationController
 
   def new
     @publisher = Publisher.new(params[:id])
+    @congregations = Congregation.all
   end
 
   def create
     #Only permit an admin to create a congregation
-    @publisher = Publisher.create(publisher_params[:id])
+    @publisher = Publisher.create(publisher_params)
+    @congregations = Congregation.all
+    @publisher.congregation_id = params[:publisher][:congregation_id][1]
+    @publisher.save
 
-    redirect_to 'publishers/show'
+    redirect_to "publishers/#{@publisher.id}"
   end
 
   def edit
