@@ -12,7 +12,6 @@ class TerritoriesController < ApplicationController
   def create
     @territory = Territory.create(territory_params)
     @congregations = Congregation.all
-    binding.pry
     @territory.congregation_id = params[:territory][:congregation_id][1]
     @territory.save
     redirect_to "territories/#{@territory.id}"
@@ -21,12 +20,11 @@ class TerritoriesController < ApplicationController
   def show
     #show an individual territory
     @territory = Territory.find_by_id([:id])
-    @publisher = Publisher.find_by_id(@territory.publisher_id)
   end
 
   private
 
   def territory_params
-    params[:territory].permit(:number, :designation)
+    params.require(:territory).permit(:number, :designation, :congregation_id => [])
   end
 end
