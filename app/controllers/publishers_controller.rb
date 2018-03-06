@@ -16,6 +16,11 @@ class PublishersController < ApplicationController
     redirect_to 'publishers/show'
   end
 
+  def edit
+    @publisher = Publisher.find_by_id(current_user.publisher_id)
+    @congregation = Congregation.find_by_id(id: @publisher.congregation_id)
+  end
+
   def show
 
     #Display the current_user and congregation news throught the '_header' partial.

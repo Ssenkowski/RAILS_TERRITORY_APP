@@ -15,6 +15,6 @@ class HouseToHouseRecord < ApplicationRecord
   end
 
   def add_todays_date
-
+    Date.today.to_s(:long)
   end
 end

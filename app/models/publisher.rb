@@ -5,10 +5,26 @@ class Publisher < ApplicationRecord
   has_many :do_not_call_ids, through: :territories
 
   def add_territory
-
+    @publisher = Publisher.find_by_id(current_user.publisher_id)
+    @territory = Territory.find_by_id(params[:id])
+    @publisher.territory_id = @territory.id
   end
 
   def change_congregation
+    @publisher = Publisher.find_by_id(current_user.publisher_id)
+    @publisher.congregation_id = params([:congregation_id])
+    @publisher.save
+  end
 
+  def change_last_name
+    @publisher = Publisher.find_by_id(current_user.publisher_id)
+    @publisher.last_name = params([:last_name])
+    @publisher.save
+  end
+
+  def change_service_group
+    @publisher = Publisher.find_by_id(current_user.publisher_id)
+    @publisher.service_group = params([:service_group])
+    @publisher.save
   end
 end
