@@ -8,8 +8,11 @@ class PublishersController < ApplicationController
   end
 
   def new
-    @publisher = Publisher.new(params[:id])
-    @congregations = Congregation.all
+    if current_user.publisher_id
+      redirect_to "/congregations/index"
+    else
+      @publisher = Publisher.new(params[:id])
+    end
   end
 
   def create
@@ -20,6 +23,11 @@ class PublishersController < ApplicationController
     if @publisher.save
       current_user.publisher_id = @publisher.id
       current_user.save
+      if @publisher.bag_id == nil
+        @bag = Bag.create(publisher_id: @publisher.id)
+        @publisher.bag_id = @bag.id
+      end
+       @bag = Bag.find_by_id(@publisher.bag_id)
       redirect_to "/publishers/#{@publisher.id}"
     else
       render :new
@@ -36,6 +44,11 @@ class PublishersController < ApplicationController
 
   def show
     @publisher = Publisher.find_by_id(current_user.publisher_id)
+    @congregation = Congregation.find_by_id(@publisher.congregation_id)
+    if @publisher.bag_id == nil
+      @bag = Bag.create(publisher_id: @publisher.id)
+      @publisher.bag_id = @bag.id
+    end
     @bag = Bag.find_by_id(@publisher.bag_id)
     #Display the current_user and congregation news throught the '_header' partial.
     #if params[:territory_id]

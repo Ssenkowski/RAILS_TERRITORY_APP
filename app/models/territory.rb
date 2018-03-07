@@ -1,6 +1,5 @@
 class Territory < ApplicationRecord
   belongs_to :congregation
-  belongs_to :publisher
 
   def sign_out
     publisher_id = current_user.publisher_id

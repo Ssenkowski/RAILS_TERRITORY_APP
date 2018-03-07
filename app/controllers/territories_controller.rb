@@ -7,16 +7,17 @@ class TerritoriesController < ApplicationController
   end
 
   def new
-    @territory = Territory.new
+    @congregation = Congregation.find_by_id(params[:congregation_id])
+    @territory = Territory.new(congregation_id: params[:congregation_id])
   end
 
   def create
-    @territory = Territory.create(territory_params)
-    @congregations = Congregation.all
-    @territory.congregation_id = params[:territory][:congregation_id][1]
+    @territory = Territory.new(territory_params)
+    @territory.congregation_id = params[:congregation_id]
     @territory.save
+    @congregation = Congregation.find_by_id(@territory.congregation_id)
 
-    redirect_to "/territories/#{@territory.id}"
+    redirect_to "congregations/#{@congregation.id}/territories/#{@territory.id}"
   end
 
   def update
@@ -37,6 +38,7 @@ class TerritoriesController < ApplicationController
 
   def show
     #show an individual territory
+    @congregation = Congregation.find_by_id(params[:congregation_id])
     @territory = Territory.find_by_id(params[:id])
     @publisher = Publisher.find_by_id(current_user.publisher_id)
   end
@@ -44,6 +46,6 @@ class TerritoriesController < ApplicationController
   private
 
   def territory_params
-    params.require(:territory).permit(:number, :designation, :congregation_id => [])
+    params.require(:territory).permit(:number, :designation, :congregation_id)
   end
 end

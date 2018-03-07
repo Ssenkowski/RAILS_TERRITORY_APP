@@ -25,7 +25,8 @@ class CongregationsController < ApplicationController
   end
 
   def show
-    @congregation = Congregation.find_by_id(params[:id])
+    @publisher = Publisher.find_by_id(current_user.publisher_id)
+    @congregation = Congregation.find_by_id(@publisher.congregation_id)
   end
 
   private

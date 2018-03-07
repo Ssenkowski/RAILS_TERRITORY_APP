@@ -7,9 +7,9 @@
 <br>
 <% @territories = @bag.territories %>
 <% @territories.each do |t| %>
-<%= link_to "#{t.number}", territory_path(t) %><br>
+<%= link_to "#{t.number}", congregation_territories_path("#{t.id}") %><br>
 <% end %>
 <br>
 <br>
 <br>
-<%= link_to "Sign out a Territory", territories_path %>
+<%= link_to "Sign out a Territory", congregation_territories_path(@congregation.id) %>

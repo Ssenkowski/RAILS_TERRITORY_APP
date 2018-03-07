@@ -1,7 +1,7 @@
 <% if current_user.publisher_id == nil %>
 <%= render "add_publisher_id" %>
 <% else %>
-<%= link_to 'Add an available Territory to your bag', territories_path %>
+<%= link_to 'Add an available Territory to your bag', congregation_territory_path(@congregation.id) %>
 <br>
 <br>
 <% end %>

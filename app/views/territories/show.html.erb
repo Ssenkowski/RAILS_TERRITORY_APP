@@ -1,6 +1,6 @@
 <h3> <%= @territory.number %> - <%= @territory.designation %> </h3>
 
-<%= form_for @territory do |f| %>
+<%= form_for [@congregation, @territory] do |f| %>
   <%= f.hidden_field :territory_id, :value => @territory.id %>
   <%= f.submit 'Sign Out this Territory' %>
 <% end %>

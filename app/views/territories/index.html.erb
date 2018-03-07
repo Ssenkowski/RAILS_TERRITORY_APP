@@ -2,7 +2,7 @@ Sign out a Territory:
 <br>
 <br>
 <% @territories.each do |t| %>
-<%= link_to "##{t.number}", territory_path("#{t.id}") %> - <%= t.designation %> <br>
+<%= link_to "##{t.number}", "/congregations/#{t.congregation_id}/territories/#{t.id}" %> - <%= t.designation %> <br>
 <br>
 <%end%>
 <br>

@@ -1,9 +1,8 @@
 <h2> Add a new Territory </h2>
 <br>
 
-<%= form_for @territory do |f| %>
+<%= form_for [@congregation, @territory] do |f| %>
   <% designations = ['Residential', 'Business', 'Writing'] %>
-  <%=f.collection_check_boxes(:congregation_id, Congregation.all, :id, :name) %>
   <br>
   <br>
   <%=f.label :number %>
