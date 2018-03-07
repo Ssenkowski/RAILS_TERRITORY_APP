@@ -4,7 +4,7 @@ class PublishersController < ApplicationController
   def index
     #Allow all users to see this page
     @publishers = Publisher.all
-    redirect_to root_path
+    render :show
   end
 
   def new
