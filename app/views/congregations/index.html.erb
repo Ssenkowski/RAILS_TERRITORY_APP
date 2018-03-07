@@ -1,5 +1,7 @@
-<%= link_to 'Add a Congregation', new_congregation_path %>
+<% if current_user.publisher_id == nil %>
+<%= render "add_publisher_id" %>
+<% else %>
+<%= link_to 'See available Territories', territories_path %>
 <br>
-<%= link_to 'Add a Publisher', new_publisher_path %>
 <br>
-<%= link_to 'Add a Territory', new_territory_path %>
+<% end %>

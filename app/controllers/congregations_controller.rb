@@ -2,6 +2,7 @@ class CongregationsController < ApplicationController
   def index
     #Allow all users to see this page
     @congregations = Congregation.all
+    @publisher = Publisher.new
   end
 
   def new
@@ -12,7 +13,7 @@ class CongregationsController < ApplicationController
     #Only permit an admin to create a congregation
     @congregation = Congregation.create(congregation_params)
 
-    redirect_to "congregations/#{@congregation.id}"
+    redirect_to "/congregations/#{@congregation.id}"
   end
 
   def edit

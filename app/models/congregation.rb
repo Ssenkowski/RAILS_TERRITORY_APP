@@ -6,6 +6,13 @@ class Congregation < ApplicationRecord
     @publisher = Publisher.new
   end
 
+  def current_publisher
+    if current_user.publisher_id != nil || ""
+    @current_publisher = current_user.publisher_id
+    @current_publisher
+    end
+  end
+
   def add_territory
     @territory = Territory.new
   end

@@ -16,7 +16,10 @@ class PublishersController < ApplicationController
     @congregations = Congregation.all
     @publisher.congregation_id = params[:publisher][:congregation_id][1]
     @publisher.save
-    redirect_to "publishers/#{@publisher.id}"
+    current_user.publisher_id = @publisher.id
+    current_user.save
+    binding.pry
+    redirect_to "/publishers/#{@publisher.id}"
   end
 
   def edit
@@ -25,7 +28,6 @@ class PublishersController < ApplicationController
   end
 
   def show
-
     #Display the current_user and congregation news throught the '_header' partial.
     @publisher = Publisher.find_by_id(params[:id])
     #if params[:territory_id]

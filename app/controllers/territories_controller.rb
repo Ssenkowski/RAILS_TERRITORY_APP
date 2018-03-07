@@ -15,7 +15,8 @@ class TerritoriesController < ApplicationController
     @congregations = Congregation.all
     @territory.congregation_id = params[:territory][:congregation_id][1]
     @territory.save
-    redirect_to "territories/#{@territory.id}"
+
+    redirect_to "/territories/#{@territory.id}"
   end
 
   def show
