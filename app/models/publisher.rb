@@ -1,18 +1,7 @@
 class Publisher < ApplicationRecord
   belongs_to :congregation
-  has_many :territories, through: :publisher_territories
-
-  def add_territory
-    @publisher = Publisher.find_by_id(current_user.publisher_id)
-    @territory = Territory.find_by_id(params[:id])
-    @publisher.territory_id = @territory.id
-  end
-
-  def remove_territory
-    @publisher = Publisher.find_by_id(current_user.publisher_id)
-    @publisher.territory_id.destroy #when a terrtiory is complete remove the territory from the users list of signed out territories
-    @publisher.save
-  end
+  has_one :bag
+  has_many :territories, through: :bag
 
   def change_congregation
     @publisher = Publisher.find_by_id(current_user.publisher_id)

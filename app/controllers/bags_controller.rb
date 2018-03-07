@@ -1,0 +1,3 @@
+class BagsController < ApplicationRecord
+
+end
