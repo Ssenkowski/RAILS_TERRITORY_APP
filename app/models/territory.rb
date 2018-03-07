@@ -5,11 +5,19 @@ class Territory < ApplicationRecord
 
   end
 
+  def returned_date
+
+  end
+  
   def completed_date
 
   end
 
   def card_lost
+
+  end
+
+  def recorded_in_book?
 
   end
 end

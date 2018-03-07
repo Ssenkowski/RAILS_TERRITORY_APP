@@ -1,8 +1,9 @@
 class TerritoriesController < ApplicationController
 
   def index
-      #Show all the territories
+      #Show all the territories for the administrators
       @territories = Territory.all
+      #Show only the next 5-10 availbable territories by last completed date with oldest date first to all publishers.
   end
 
   def new

@@ -34,6 +34,8 @@ gem 'pry'
 
 gem 'devise'
 
+gem 'omniauth'
+gem 'omniauth-facebook'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
