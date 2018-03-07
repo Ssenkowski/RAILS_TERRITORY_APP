@@ -2,7 +2,6 @@ class CongregationsController < ApplicationController
   def index
     #Allow all users to see this page
     @congregations = Congregation.all
-    @publisher = Publisher.new
   end
 
   def new

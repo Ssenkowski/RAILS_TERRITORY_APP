@@ -3,6 +3,11 @@ class Publisher < ApplicationRecord
   has_one :bag
   has_many :territories, through: :bag
 
+  validates_presence_of :first_name, :message => "can't be empty"
+  validates_presence_of :last_name, :message => "can't be empty"
+  validates_presence_of :username, :message => "can't be empty"
+
+
   def change_congregation
     @publisher = Publisher.find_by_id(current_user.publisher_id)
     @publisher.congregation_id = params([:congregation_id])

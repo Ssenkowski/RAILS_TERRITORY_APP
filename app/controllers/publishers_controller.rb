@@ -4,6 +4,7 @@ class PublishersController < ApplicationController
   def index
     #Allow all users to see this page
     @publishers = Publisher.all
+    redirect_to root_path
   end
 
   def new
@@ -16,10 +17,13 @@ class PublishersController < ApplicationController
     @publisher = Publisher.create(publisher_params)
     @congregations = Congregation.all
     @publisher.congregation_id = params[:publisher][:congregation_id][1]
-    @publisher.save
-    current_user.publisher_id = @publisher.id
-    current_user.save
-    redirect_to "/publishers/#{@publisher.id}"
+    if @publisher.save
+      current_user.publisher_id = @publisher.id
+      current_user.save
+      redirect_to "/publishers/#{@publisher.id}"
+    else
+      render :new
+    end
   end
 
   def edit
