@@ -19,9 +19,21 @@ class TerritoriesController < ApplicationController
     redirect_to "/territories/#{@territory.id}"
   end
 
+  def update
+    @publisher = Publisher.find_by_id(current_user.publisher_id)
+    @publisher.territory_id = params[:territory][:territory_id]
+    @publisher.save
+
+    redirect_to "/publishers/#{@publisher.id}"
+  end
+
+  def edit
+  end
+
   def show
     #show an individual territory
     @territory = Territory.find_by_id(params[:id])
+    @publisher = Publisher.find_by_id(current_user.publisher_id)
   end
 
   private

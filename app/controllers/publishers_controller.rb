@@ -1,8 +1,9 @@
 class PublishersController < ApplicationController
+  before_action :set_user, only: [:edit, :update, :show]
 
   def index
     #Allow all users to see this page
-    @publisher = Publisher.find_by_id(params[:id])
+    @publishers = Publisher.all
   end
 
   def new
@@ -18,18 +19,19 @@ class PublishersController < ApplicationController
     @publisher.save
     current_user.publisher_id = @publisher.id
     current_user.save
-    binding.pry
     redirect_to "/publishers/#{@publisher.id}"
   end
 
   def edit
-    @publisher = Publisher.find_by_id(current_user.publisher_id)
     @congregation = Congregation.find_by_id(id: @publisher.congregation_id)
+  end
+
+  def update
+    @publisher.update(publisher_params)
   end
 
   def show
     #Display the current_user and congregation news throught the '_header' partial.
-    @publisher = Publisher.find_by_id(params[:id])
     #if params[:territory_id]
     #@territory = Territory.find_by_id(@publisher.territory_id)
     #end
@@ -40,5 +42,9 @@ class PublishersController < ApplicationController
 
   def publisher_params
       params[:publisher].permit(:username, :first_name, :last_name, :congregation_id, :service_group, :territory_id)
+  end
+
+  def set_user
+    @publisher = Publisher.find_by_id(params[:id])
   end
 end

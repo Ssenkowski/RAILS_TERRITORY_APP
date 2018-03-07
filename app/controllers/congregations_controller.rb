@@ -21,6 +21,10 @@ class CongregationsController < ApplicationController
 
   end
 
+  def update
+
+  end
+
   def show
     @congregation = Congregation.find_by_id(params[:id])
   end

@@ -1,6 +1,6 @@
 class Publisher < ApplicationRecord
   belongs_to :congregation
-  has_many :territories, through: :congregation
+  has_many :territories
 
   def add_territory
     @publisher = Publisher.find_by_id(current_user.publisher_id)
