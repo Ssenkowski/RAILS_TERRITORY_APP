@@ -10,12 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180307192605) do
+ActiveRecord::Schema.define(version: 20180307200328) do
 
   create_table "bags", force: :cascade do |t|
     t.integer "publisher_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "territory_id"
   end
 
   create_table "congregations", force: :cascade do |t|
@@ -76,7 +77,6 @@ ActiveRecord::Schema.define(version: 20180307192605) do
   create_table "publishers", force: :cascade do |t|
     t.string "username"
     t.integer "congregation_id"
-    t.integer "territory_id"
     t.string "first_name"
     t.string "last_name"
     t.integer "service_group"

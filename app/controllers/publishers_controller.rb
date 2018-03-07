@@ -27,10 +27,12 @@ class PublishersController < ApplicationController
   end
 
   def update
-    @publisher.update(publisher_params)
+    @publisher = Publisher.update(publisher_params)
   end
 
   def show
+    @publisher = Publisher.find_by_id(current_user.publisher_id)
+    @bag = Bag.find_by_id(@publisher.bag_id)
     #Display the current_user and congregation news throught the '_header' partial.
     #if params[:territory_id]
     #@territory = Territory.find_by_id(@publisher.territory_id)
@@ -41,7 +43,7 @@ class PublishersController < ApplicationController
   private
 
   def publisher_params
-      params[:publisher].permit(:username, :first_name, :last_name, :congregation_id, :service_group, :territory_id)
+      params[:publisher].permit(:username, :first_name, :last_name, :congregation_id, :service_group, :territory_id, :bag_id)
   end
 
   def set_user

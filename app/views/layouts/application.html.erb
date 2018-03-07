@@ -11,7 +11,7 @@
   <body>
     <p class="navbar-text pull-right">
       <%= link_to 'Home Page', root_path, :class => 'navbar-link' %> |
-      <% if user_signed_in? %>
+      <% if user_signed_in? && current_user.publisher_id != nil%>
       <% publisher = current_user.publisher_id %>
       <% current_publisher = Publisher.find_by_id(publisher) %>
         Logged in as <strong> <%= current_publisher.first_name %> <%= current_publisher.last_name%></strong>.

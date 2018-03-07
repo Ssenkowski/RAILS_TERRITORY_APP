@@ -5,9 +5,11 @@
 <strong> Your current territories: </strong>
 <br>
 <br>
-<%@territory = Territory.find_by_id(@publisher.territory_id) %>
-<%= link_to "#{@territory.number}", territory_path(@territory) %> <%= @territory.designation %>
+<% @territories = @bag.territories %>
+<% @territories.each do |t| %>
+<%= link_to "#{t.number}", territory_path(t) %><br>
+<% end %>
 <br>
 <br>
 <br>
-<%= link_to "Sign out a Territory", territory_path %>
+<%= link_to "Sign out a Territory", territories_path %>

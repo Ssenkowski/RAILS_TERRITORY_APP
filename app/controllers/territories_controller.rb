@@ -21,8 +21,13 @@ class TerritoriesController < ApplicationController
 
   def update
     @publisher = Publisher.find_by_id(current_user.publisher_id)
-    @publisher.territory_id = params[:territory][:territory_id]
-    @publisher.save
+    if @publisher.bag_id == nil
+      @bag = Bag.create(publisher_id: @publisher.id)
+      @publisher.bag_id = @bag.id
+    end
+     @bag = Bag.find_by_id(@publisher.bag_id)
+     @bag.sign_out_territory(params[:territory][:territory_id])
+     @publisher.save
 
     redirect_to "/publishers/#{@publisher.id}"
   end
