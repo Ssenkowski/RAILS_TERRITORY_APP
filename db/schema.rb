@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180307160753) do
+ActiveRecord::Schema.define(version: 20180307185710) do
 
   create_table "congregations", force: :cascade do |t|
     t.string "name"
@@ -56,6 +56,13 @@ ActiveRecord::Schema.define(version: 20180307160753) do
     t.boolean "do_not_call?", default: false
     t.text "notes"
     t.date "date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "publisher_territories", force: :cascade do |t|
+    t.integer "publisher_id"
+    t.integer "territory_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

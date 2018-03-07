@@ -1,9 +1,13 @@
-Welcome <%= @publisher.first_name %> <%= @publisher.last_name %>!
+<h2> Welcome <%= @publisher.first_name %> <%= @publisher.last_name %>! </h2>
 
-<%= link_to "Sign out a Territory", territory_path %>
 <br>
 <br>
-Your current territories:
-
+<strong> Your current territories: </strong>
+<br>
+<br>
 <%@territory = Territory.find_by_id(@publisher.territory_id) %>
 <%= link_to "#{@territory.number}", territory_path(@territory) %> <%= @territory.designation %>
+<br>
+<br>
+<br>
+<%= link_to "Sign out a Territory", territory_path %>
