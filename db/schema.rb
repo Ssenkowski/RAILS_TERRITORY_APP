@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180307200328) do
+ActiveRecord::Schema.define(version: 20180308132043) do
 
   create_table "bags", force: :cascade do |t|
     t.integer "publisher_id"
@@ -97,6 +97,7 @@ ActiveRecord::Schema.define(version: 20180307200328) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "congregation_id"
+    t.string "signed_out"
   end
 
   create_table "users", force: :cascade do |t|

@@ -1,5 +1,6 @@
 class Territory < ApplicationRecord
   belongs_to :congregation
+  scope :signed_out, -> { where(signed_out: "true")}
 
   def sign_out
     publisher_id = current_user.publisher_id
@@ -11,7 +12,7 @@ class Territory < ApplicationRecord
     @territory.save
   end
 
-  def returned_date
+  def return
 
   end
 

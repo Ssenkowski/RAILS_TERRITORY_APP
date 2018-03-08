@@ -9,6 +9,9 @@ class Bag < ApplicationRecord
       @current_territory = self.publisher_territories.build(territory_id: territory_id)
     end
     self.territory_id = @current_territory.id
+    @territory = Territory.find_by_id(territory_id)
+    @territory.signed_out = "true"
+    @territory.save
     self.save
   end
 
