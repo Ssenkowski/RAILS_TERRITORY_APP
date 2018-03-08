@@ -42,7 +42,6 @@ class CongregationsController < ApplicationController
       else
         @congregation = Congregation.find_by_id(params[:id])
       end
-      
       if current_user.publisher_id == nil
         redirect_to new_publisher_path
       else

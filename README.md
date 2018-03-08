@@ -1,25 +1,22 @@
-# README
+# README  # RAILS_TERRITORY_APP
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+#Application Description
+The RAILS_TERRITORY_APP was designed to help congregation territory servants manage their congregations territories by making territories downloadable to publishers and trackable to servants with the app.
 
-Things you may want to cover:
+#Installation Guide
+To install the RAILS_TERRITORY_APP simple clone the Github repository, cd into the application directory, run bundle install and run it through your local rails server via the command 'rails s'.  From that point on simply follow the onscreen instructions.
 
-* Ruby version
+#Contributors Guide
+If this is your first time contributing, please keep reading to learn how to make the best impact.
 
-* System dependencies
+  Submitting a Pull Request to Suggest an Improvement
 
-* Configuration
+If you see an opportunity for improvement and can make the change yourself go ahead and use a typical git workflow to make it happen:
 
-* Database creation
+Fork this repository
+Make the change on your fork, with descriptive commits in the standard format
+Open a Pull Request against this repo
+The license holder will attempt review your change and approve or comment on it as soon as possible.
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-# RAILS_TERRITORY_APP
+#Licensing Statement
+Viewable license at https://github.com/Ssenkowski/RAILS_TERRITORY_APP/LICENSE.md
