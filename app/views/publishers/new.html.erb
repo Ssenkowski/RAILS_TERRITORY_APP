@@ -1,4 +1,5 @@
-<h1> Add a new Publisher </h1>
+<h1> Create your Publisher Account </h1>
+<h3> Please be sure to use the same email you did logging in or signing up which is the email listed at the top of the page.</h3>
 <br>
 
 <%= form_for @publisher do |f| %>
@@ -15,6 +16,9 @@
         </ul>
       </div>
   <%end%>
+  <%=f.label :email %>
+  <%=f.email_field :email %>
+  <br>
   <%=f.label :username %>
   <%=f.text_field :username %>
   <br>

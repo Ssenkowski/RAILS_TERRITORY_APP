@@ -5,9 +5,16 @@
 <strong> Your current territories: </strong>
 <br>
 <br>
-<% @territories = @bag.territories %>
+  <% @territories = [] %>
+  <% @bag.territories.each do |t| %>
+    <% @territories << t %>
+  <% end %>
+  <% @territories.uniq! %>
 <% @territories.each do |t| %>
-<%= link_to "#{t.number}", "/congregations/#{t.congregation_id}/territories/#{t.id}" %><br>
+<% if t.signed_out == "true" %>
+<%= button_to "#{t.number}", "/congregations/#{t.congregation_id}/territories/#{t.id}", :method => :get %>
+<% end %>
+<br>
 <% end %>
 <br>
 <br>

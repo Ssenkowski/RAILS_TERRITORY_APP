@@ -1,10 +1,13 @@
 Sign out a Territory:
 <br>
 <br>
-<% @territories.each do |t| %>
-<% if t.signed_out != "true" %>
-<%= link_to "##{t.number}", "/congregations/#{t.congregation_id}/territories/#{t.id}" %> - <%= t.designation %> <br>
-<% end %>
-<br>
-<%end%>
+<% if !@territories.empty? %>
+  <% @territories.each do |t| %>
+    <% if t.signed_out != "true" %>
+    <%= link_to "##{t.number}", "/congregations/#{t.congregation_id}/territories/#{t.id}" %> - <%= t.designation %> <br>
+    <% end %> <br>
+  <%end%>
+  <% else %>
+  There currently are no terrtories created, please create a territory first <%= link_to "Create a Territory", new_congregation_territory_path(params[:congregation_id]) %>
+  <% end %>
 <br>

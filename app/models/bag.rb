@@ -11,6 +11,7 @@ class Bag < ApplicationRecord
     self.territory_id = @current_territory.id
     @territory = Territory.find_by_id(territory_id)
     @territory.signed_out = "true"
+    @territory.bag_id = self.id
     @territory.save
     self.save
   end

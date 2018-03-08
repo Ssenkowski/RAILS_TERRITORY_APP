@@ -6,6 +6,8 @@ class Publisher < ApplicationRecord
   validates_presence_of :first_name, :message => "can't be empty"
   validates_presence_of :last_name, :message => "can't be empty"
   validates_presence_of :username, :message => "can't be empty"
+  validates_presence_of :email, :message => "can't be empty"
+
 
 
   def change_congregation

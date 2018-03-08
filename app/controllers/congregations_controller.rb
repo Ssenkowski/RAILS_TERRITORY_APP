@@ -2,6 +2,12 @@ class CongregationsController < ApplicationController
   def index
     #Allow all users to see this page
     @congregations = Congregation.all
+    if current_user.publisher_id != nil
+      @publisher = Publisher.find_by_id(current_user.publisher_id)
+      @congregation = Congregation.find_by_id(@publisher.congregation_id)
+    else
+      redirect_to new_congregation_path
+    end
   end
 
   def new
@@ -25,8 +31,24 @@ class CongregationsController < ApplicationController
   end
 
   def show
-    @publisher = Publisher.find_by_id(current_user.publisher_id)
-    @congregation = Congregation.find_by_id(@publisher.congregation_id)
+    if current_user.publisher_id
+      @publisher = Publisher.find_by_id(current_user.publisher_id)
+    end
+    if Congregation.all.empty?
+      redirect_to congregations_path
+    else
+      if @publisher
+        @congregation = Congregation.find_by_id(@publisher.congregation_id)
+      else
+        @congregation = Congregation.find_by_id(params[:id])
+      end
+      
+      if current_user.publisher_id == nil
+        redirect_to new_publisher_path
+      else
+        @publisher = Publisher.find_by_id(current_user.publisher_id)
+      end
+    end
   end
 
   private
