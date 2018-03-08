@@ -1,6 +1,21 @@
 <h2> Add a new Congregation </h2>
 
 <%= form_for @congregation do |f| %>
+
+  <% if @congregation.errors.any? %>
+  <div id="error_explanation">
+    <h3>
+      <%= pluralize(@congregation.errors.count, "error") %>
+      prohibited this post from being saved:
+    </h3>
+        <ul>
+          <% @congregation.errors.full_messages.each do |message| %>
+            <li><%= message %> </li>
+          <%end%>
+        </ul>
+      </div>
+  <%end%>
+
   <%=f.label :name %>
   <%=f.text_field :name %>
   <br>

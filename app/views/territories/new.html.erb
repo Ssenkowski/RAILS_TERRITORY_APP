@@ -2,12 +2,13 @@
 <br>
 
 <%= form_for [@congregation, @territory] do |f| %>
-<% if @territory.errors.any? %>
-  <div id="error_explanation">
-    <h3>
-      <%= pluralize(@territory.errors.count, "error") %>
-      prohibited this post from being saved:
-    </h3>
+
+  <%if @territory.errors.any? %>
+    <div id="error_explanation">
+      <h3>
+        <%= pluralize(@territory.errors.count, "error") %>
+        prohibited this post from being saved:
+      </h3>
         <ul>
           <% @territory.errors.full_messages.each do |message| %>
             <li><%= message %> </li>
@@ -15,6 +16,7 @@
         </ul>
       </div>
   <%end%>
+
   <% designations = ['Residential', 'Business', 'Writing'] %>
   <br>
   <br>
