@@ -2,21 +2,20 @@
 
 <br>
 <br>
-<strong> Your current territories: </strong>
+  <strong> Your current territories: </strong>
 <br>
 <br>
   <% @territories = [] %>
-  <% @bag.territories.each do |t| %>
-    <% @territories << t %>
-  <% end %>
+    <% @bag.territories.each do |t| %>
+      <% @territories << t %>
+      <% end %>
   <% @territories.uniq! %>
-<% @territories.each do |t| %>
-<% if t.signed_out == "true" %>
-<%= button_to "#{t.number}", "/congregations/#{t.congregation_id}/territories/#{t.id}", :method => :get %>
-<% end %>
-<br>
-<% end %>
-<br>
+    <% @territories.each do |t| %>
+      <% if t.signed_out == "true" %>
+      <%= button_to "#{t.number}", "/congregations/#{t.congregation_id}/territories/#{t.id}", :method => :get %> <br>
+      <% end %>
+    <% end %>
 <br>
 <br>
-<%= link_to "Sign out a Territory", congregation_territories_path(@congregation.id) %>
+<br>
+  <%= button_to "Sign out a Territory", congregation_territories_path(@congregation.id), :method => :get %>

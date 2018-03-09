@@ -1,7 +1,6 @@
 <h2> Sign out a Territory </h2>
 <br>
 <br>
-<% if !@territories.empty? %>
   <strong>  Residential Territories:<br><br></strong>
     <% @territories.each do |t| %>
       <% if t.signed_out != "true" %>
@@ -26,7 +25,5 @@
           <%end%>
         <%end%>
       <%end%>
-<% else %>
-  There currently are no terrtories created, please create a territory first <%= link_to "Create a Territory", new_congregation_territory_path(params[:congregation_id]) %>
-<% end %>
 <br>
+**<i>If there are no available territories please talk to your territory servant.</i>**

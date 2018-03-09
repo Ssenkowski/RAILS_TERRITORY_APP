@@ -1,10 +1,9 @@
 <% @publisher = Publisher.find_by_id(current_user.publisher_id) %>
+
 <% if @congregations.empty? %>
-<%= link_to 'Create a congregation first', new_congregation_path %>
+  <%= link_to 'Create a congregation first', new_congregation_path %>
 <% elsif current_user.publisher_id == nil %>
-<%= render "add_publisher_id" %>
+  <%= render "add_publisher_id" %>
 <% else %>
-<%= link_to 'Add an available Territory to your bag', "/congregations/#{@publisher.congregation_id}/territories" %>
-<br>
-<br>
+  <%= link_to 'Add an available Territory to your bag', "/congregations/#{@publisher.congregation_id}/territories" %><br><br>
 <% end %>

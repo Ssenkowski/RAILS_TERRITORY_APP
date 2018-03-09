@@ -53,7 +53,6 @@ class CongregationsController < ApplicationController
   def current_publisher
     if current_user.publisher_id
     @publisher = Publisher.find_by_id(current_user.publisher_id)
-    @publisher
     end
   end
 
