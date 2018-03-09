@@ -13,7 +13,7 @@ class PublishersController < ApplicationController
 
   def new
     if Congregation.all.empty?
-      redirect_to "/congregations/index"
+      redirect_to "/congregations/new"
     else
       @publisher = Publisher.new(params[:id])
     end
