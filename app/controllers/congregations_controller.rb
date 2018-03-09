@@ -10,8 +10,14 @@ class CongregationsController < ApplicationController
   end
 
   def new
-    if current_user.administrator
-    @congregation = Congregation.new
+    if current_user.id == 1
+      current_user.update_attribute :admin, true
+    end
+    if current_user.admin?
+      @congregation = Congregation.new
+    else
+      redirect_to new_publisher_path
+    end
   end
 
   def create

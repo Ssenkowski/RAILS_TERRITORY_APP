@@ -1,13 +1,32 @@
-Sign out a Territory:
+<h2> Sign out a Territory </h2>
 <br>
 <br>
 <% if !@territories.empty? %>
-  <% @territories.each do |t| %>
-    <% if t.signed_out != "true" %>
-    <%= link_to "##{t.number}", "/congregations/#{t.congregation_id}/territories/#{t.id}" %> - <%= t.designation %> <br>
-    <% end %> <br>
-  <%end%>
-  <% else %>
+  <strong>  Residential Territories:<br><br></strong>
+    <% @territories.each do |t| %>
+      <% if t.signed_out != "true" %>
+        <% if t.designation == "Residential" %>
+          <%= button_to "##{t.number}", "/congregations/#{t.congregation_id}/territories/#{t.id}", :method => :get %>  <br>
+        <%end%>
+      <%end%>
+    <%end%>
+  <strong>  Business Territories:<br><br></strong>
+    <% @territories.each do |t| %>
+      <% if t.signed_out != "true" %>
+        <% if t.designation == "Business" %>
+          <%= button_to "##{t.number}", "/congregations/#{t.congregation_id}/territories/#{t.id}", :method => :get %>  <br>
+        <%end%>
+      <%end%>
+    <%end%>
+    <strong>  Writing Territories:<br><br></strong>
+      <% @territories.each do |t| %>
+        <% if t.signed_out != "true" %>
+          <% if t.designation == "Writing" %>
+            <%= button_to "##{t.number}", "/congregations/#{t.congregation_id}/territories/#{t.id}", :method => :get %>  <br>
+          <%end%>
+        <%end%>
+      <%end%>
+<% else %>
   There currently are no terrtories created, please create a territory first <%= link_to "Create a Territory", new_congregation_territory_path(params[:congregation_id]) %>
-  <% end %>
+<% end %>
 <br>

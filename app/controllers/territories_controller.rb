@@ -7,8 +7,13 @@ class TerritoriesController < ApplicationController
   end
 
   def new
-    set_congregation
-    @territory = Territory.new(congregation_id: params[:congregation_id])
+    if current_user.admin
+      set_congregation
+      @territory = Territory.new(congregation_id: params[:congregation_id])
+    else
+      flash[:notice] = "Sorry your not authorized to do this, if there are not territories please talk to your territory servant or overseer."
+      redirect_to publisher_path(current_user.publisher_id)
+    end
   end
 
   def create
@@ -50,12 +55,8 @@ class TerritoriesController < ApplicationController
   def show
     set_congregation
     set_publisher
+    set_bag
     @territory = Territory.find_by_id(params[:id])
-    if @territory.bag_id == nil
-      @bag = Bag.find_by(publisher_id: @publisher.id)
-      @territory.bag_id = @bag.id
-      @territory.save
-    end
   end
 
   private

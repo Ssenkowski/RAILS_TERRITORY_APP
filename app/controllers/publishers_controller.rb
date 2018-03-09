@@ -28,12 +28,12 @@ class PublishersController < ApplicationController
       if @publisher.email == current_user.email
         current_user.publisher_id = @publisher.id
         current_user.save
+      else
+        flash[:notice] = "Please enter the correct email."
+        redirect_to new_publisher_path
       end
-      if @publisher.bag_id == nil
-        @bag = Bag.create(publisher_id: @publisher.id)
-        @publisher.bag_id = @bag.id
-      end
-       @bag = Bag.find_by_id(@publisher.bag_id)
+      create_service_bag
+      set_service_bag
       redirect_to "/publishers/#{@publisher.id}"
     else
       render :new
@@ -51,11 +51,7 @@ class PublishersController < ApplicationController
   def show
     set_publisher
     set_congregation
-    if @publisher.bag_id == nil
-      @bag = Bag.create(publisher_id: @publisher.id)
-      @publisher.bag_id = @bag.id
-    end
-    @bag = Bag.find_by_id(@publisher.bag_id)
+    set_service_bag
     #Display the current_user and congregation news throught the '_header' partial.
     #if params[:territory_id]
     #@territory = Territory.find_by_id(@publisher.territory_id)
@@ -79,5 +75,17 @@ class PublishersController < ApplicationController
 
   def set_congregation
     @congregation = Congregation.find_by_id(@publisher.congregation_id)
+  end
+
+  def set_service_bag
+    @bag = Bag.find_by_id(@publisher.bag_id)
+  end
+
+  def create_service_bag
+    if @publisher.bag_id == nil
+      @bag = Bag.create(publisher_id: @publisher.id)
+      @publisher.bag_id = @bag.id
+      @publisher.save
+    end
   end
 end
