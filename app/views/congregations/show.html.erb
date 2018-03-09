@@ -1,5 +1,9 @@
 <h2> <%= @congregation.name %> Congregation  #<%= @congregation.number %></h2>
 <h3> Address: <%=@congregation.address%> <%=@congregation.street%> </h3>
 
-Add a congregation publisher: <%= link_to 'Add a publisher', new_publisher_path %><br>
-Add a congregation territory: <%= link_to 'Add a territory', new_congregation_territory_path(@congregation.id) %>
+<br>
+<% if current_user.admin %>
+Add a new publisher: <%= button_to 'Add a publisher', new_publisher_path, :method => :get %><br>
+Add a new territory: <%= button_to 'Add a territory', new_congregation_territory_path(@congregation.id), :method => :get %><br>
+Add a new congregation: <%= button_to 'Add a congregation', new_congregation_path, :method => :get %><br>
+<% end %>

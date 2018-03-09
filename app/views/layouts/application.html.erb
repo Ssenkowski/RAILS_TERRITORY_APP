@@ -15,9 +15,12 @@
       <% current_publisher = Publisher.find_by_id(publisher) %>
       <%= link_to "#{current_publisher.congregation.name} Congregation Home Page", congregation_path(current_publisher.congregation_id), :class => 'navbar-link' %> |
       <%= link_to 'Users Home Page', publisher_path(current_publisher.id), :class => 'navbar-link' %> |
-        Logged in as <strong> <%= current_publisher.first_name %> <%= current_publisher.last_name%></strong>, Your email: <strong><%= current_user.email %></strong>.
+        Logged in as <strong><%= current_publisher.first_name %> <%= current_publisher.last_name%> -  <% if current_user.admin %><%= "Admin" %> <%end%></strong>
         <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
         <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+        <br>
+        <br>
+        Email: <strong><%= current_user.email %></strong>
       <% else %>
         <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
         <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>

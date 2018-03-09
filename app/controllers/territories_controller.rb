@@ -2,8 +2,6 @@ class TerritoriesController < ApplicationController
 
   def index
     @territories = Territory.all
-    #Show all the territories and their attributes for the administrators
-    #Show only the next 5-10 availbable territories by last completed date with oldest date first to all publishers.
   end
 
   def new
@@ -20,30 +18,14 @@ class TerritoriesController < ApplicationController
     @territory = Territory.new(territory_params)
     @territory.congregation_id = params[:congregation_id]
     @territory.save
-    @congregation = Congregation.find_by_id(@territory.congregation_id)
+    set_congregation
+
     redirect_to "/congregations/#{@congregation.id}/territories"
   end
 
   def update
     set_publisher
-    if params[:return_territory]
-      @publisher_territories = @publisher.territories
-      @publisher_territories.each do |t|
-        set_bag
-        set_publisher_territory
-        if t.id == params[:id].to_i
-          t.return(params)
-          @publisher_territory.territory_id = nil
-        end
-      end
-    elsif
-      @publisher.bag_id == nil
-        @bag = Bag.create(publisher_id: @publisher.id)
-        @publisher.bag_id = @bag.id
-    else
-      set_bag
-      @bag.sign_out_territory(params[:territory][:territory_id])
-    end
+    sign_out_or_return_territory
     @publisher.save
 
     redirect_to "/publishers/#{@publisher.id}"
@@ -77,7 +59,32 @@ class TerritoriesController < ApplicationController
         @bag = Bag.find_by_id(@publisher.bag_id)
       end
 
+      #----------------------------------------------------------------
+      # Methods specific to signing out and returning territories below
+      #----------------------------------------------------------------
+
       def set_publisher_territory
         @publisher_territory = PublisherTerritory.find_by(params[:id])
+      end
+
+      def sign_out_or_return_territory
+        if params[:return_territory]
+          @publisher_territories = @publisher.territories
+          @publisher_territories.each do |t|
+            set_bag
+            set_publisher_territory
+            if t.id == params[:id].to_i
+              t.return(params)
+              @publisher_territory.territory_id = nil
+            end
+          end
+        elsif
+          @publisher.bag_id == nil
+            @bag = Bag.create(publisher_id: @publisher.id)
+            @publisher.bag_id = @bag.id
+        else
+          set_bag
+          @bag.sign_out_territory(params[:territory][:territory_id])
+        end
       end
 end

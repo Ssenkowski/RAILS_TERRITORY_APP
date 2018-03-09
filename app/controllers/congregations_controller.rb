@@ -3,7 +3,7 @@ class CongregationsController < ApplicationController
     #Allow all users to see this page
     @congregations = Congregation.all
     if current_publisher
-      set_congregation
+      set_congregation_by_publisher
     else
       redirect_to new_publisher_path
     end
@@ -21,7 +21,6 @@ class CongregationsController < ApplicationController
   end
 
   def create
-    #Only permit an admin to create a congregation
     @congregation = Congregation.create(congregation_params)
 
     redirect_to "/congregations/#{@congregation.id}"
@@ -29,7 +28,6 @@ class CongregationsController < ApplicationController
 
   def edit
     @congregation = Congregation.find_by_id(params[:id])
-
   end
 
   def update
@@ -38,10 +36,10 @@ class CongregationsController < ApplicationController
 
   def show
     if current_publisher
-      set_congregation
+      set_congregation_by_publisher
     elsif !current_publisher
       redirect_to new_publisher_path
-    else !set_congregation
+    else !set_congregation_by_publisher
       redirect_to congregations_path
     end
   end
@@ -59,7 +57,7 @@ class CongregationsController < ApplicationController
     end
   end
 
-  def set_congregation
+  def set_congregation_by_publisher
     @congregation = Congregation.find_by_id(@publisher.congregation_id)
   end
 end

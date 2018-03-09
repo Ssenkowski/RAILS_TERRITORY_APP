@@ -2,7 +2,6 @@ class PublishersController < ApplicationController
   before_action :set_user, only: [:edit, :update, :show]
 
   def index
-    #Allow all users to see this page
     @publishers = Publisher.all
     if Congregation.empty?
       redirect_to new_congregations_path
@@ -20,7 +19,6 @@ class PublishersController < ApplicationController
   end
 
   def create
-    #Only permit an admin to create a congregation
     @publisher = Publisher.create(publisher_params)
     @congregations = Congregation.all
     @publisher.congregation_id = params[:publisher][:congregation_id][1]
@@ -53,10 +51,6 @@ class PublishersController < ApplicationController
     set_congregation
     set_service_bag
     #Display the current_user and congregation news throught the '_header' partial.
-    #if params[:territory_id]
-    #@territory = Territory.find_by_id(@publisher.territory_id)
-    #end
-    #current_congregation
   end
 
   private
