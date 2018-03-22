@@ -3,11 +3,13 @@ class PublishersController < ApplicationController
 
   def index
     @publishers = Publisher.all
-    if Congregation.empty?
-      redirect_to new_congregations_path
-    else
-      render :show
-    end
+
+
+  #  if Congregation.empty?
+  #    redirect_to new_congregations_path
+  #  else
+      render :index
+    #end
   end
 
   def new
@@ -25,6 +27,8 @@ class PublishersController < ApplicationController
     if @publisher.save
       if @publisher.email == current_user.email
         current_user.publisher_id = @publisher.id
+        @publisher.user_id = current_user.id
+        @publisher.save
         current_user.save
       else
         flash[:notice] = "Please enter the correct email."
@@ -32,7 +36,7 @@ class PublishersController < ApplicationController
       end
       create_service_bag
       set_service_bag
-      redirect_to "/publishers/#{@publisher.id}"
+      redirect_to publisher_path(@publisher.id)
     else
       render :new
     end
@@ -44,10 +48,13 @@ class PublishersController < ApplicationController
 
   def update
     @publisher = Publisher.update(publisher_params)
+
+    redirect_to publishers_path
   end
 
   def show
     set_publisher
+    view_publisher
     set_congregation
     set_service_bag
     #Display the current_user and congregation news throught the '_header' partial.
@@ -65,6 +72,10 @@ class PublishersController < ApplicationController
 
   def set_publisher
     @publisher = Publisher.find_by_id(current_user.publisher_id)
+  end
+
+  def view_publisher
+    @view_publisher = Publisher.find_by_id(params[:id])
   end
 
   def set_congregation

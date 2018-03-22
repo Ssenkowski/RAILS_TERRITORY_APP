@@ -1,0 +1,12 @@
+<% @publishers.each do |p| %>
+  <strong>Id: </strong><%= p.id %><br>
+  <strong>Name: </strong><%= p.first_name %> <%= p.last_name %><br>
+  <strong>Congregation: </strong> <%= p.congregation.name %><br>
+  <strong>Administrator: </strong>
+    <% @user_id = p.user_id %>
+    <% user = User.find_by_id(@user_id)%>
+    <%= user.admin %>
+  <br><br>
+  <%= button_to 'Edit publisher', edit_publisher_path(p.id), :method => :get %><br>
+  <%= button_to "View publisher's territories", publisher_path(p.id), :method => :get %>
+<%end%>

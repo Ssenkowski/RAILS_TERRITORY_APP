@@ -5,13 +5,14 @@ class Bag < ApplicationRecord
 
   def sign_out_territory(territory_id)
     @current_territory = self.publisher_territories.find_by_id(territory_id)
-    if @current_territory == nil || ""
-      @current_territory = self.publisher_territories.build(territory_id: territory_id)
-    end
+      if @current_territory == nil || ""
+        @current_territory = self.publisher_territories.build(territory_id: territory_id)
+      end
     self.territory_id = @current_territory.id
     @territory = Territory.find_by_id(territory_id)
     @territory.signed_out = "true"
     @territory.bag_id = self.id
+    @territory.sign_out_date = DateTime.now.strftime("%B %d, %Y")
     @territory.save
     self.save
   end

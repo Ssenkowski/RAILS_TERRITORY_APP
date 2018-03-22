@@ -1,7 +1,7 @@
 # README  # RAILS_TERRITORY_APP
 
 #Application Description
-The RAILS_TERRITORY_APP was designed to help congregation territory servants manage their congregations territories by making territories downloadable to publishers and trackable to servants with the app.
+The RAILS_TERRITORY_APP was designed to help congregation territory servants manage their congregations territories by making territories downloadable to publishers and trackable by servants.
 
 #Installation Guide
 To install the RAILS_TERRITORY_APP simple clone the Github repository, cd into the application directory, run bundle install and run it through your local rails server via the command 'rails s'.  From that point on simply follow the onscreen instructions.
