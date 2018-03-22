@@ -1,20 +1,20 @@
 <h2> Hi <%= @publisher.first_name %>! </h2>
-<% if @view_publisher.id != current_user.publisher_id %>
-<strong><%= @view_publisher.first_name %> <%= @view_publisher.last_name %>'s Current Territories: </strong><br><br>
-  <% @view_publisher.territories.each do |t| %>
-    <% if t.signed_out == "true" %>
-    <%= button_to "#{t.number} - #{t.designation}", "/congregations/#{t.congregation_id}/territories/#{t.id}", :method => :get %>
-    <%= "Signed out: #{t.sign_out_date} " %><br><br>
-    <% end %>
-  <% end %>
-<% else current_user.admin %>
+
+<% if current_user.admin == "true" %>
   <strong><%= "As an administrator you can view or create the following:" %><br><br></strong>
   Add a new territory: <%= button_to 'Add a territory', new_congregation_territory_path(@congregation.id), :method => :get %><br>
-<br>
-<br>
-  <strong> Your current territories: </strong>
-<br>
-<br>
+<%end%><br><br>
+
+<% if @view_publisher.id != current_user.publisher_id %>
+  <strong><%= @view_publisher.first_name %> <%= @view_publisher.last_name %>'s Current Territories: </strong><br><br>
+    <% @view_publisher.territories.each do |t| %>
+      <% if t.signed_out == "true" %>
+        <%= button_to"#{t.number} - #{t.designation}", "/congregations/#{t.congregation_id}/territories/#{t.id}", :method => :get %>
+        <%= "Signed out: #{t.sign_out_date} " %><br><br>
+      <% end %>
+    <% end %>
+  <% else %>
+  <strong> Your current territories: </strong><br><br>
   <% @territories = [] %>
     <% @bag.territories.each do |t| %>
       <% @territories << t %>
@@ -25,11 +25,9 @@
       <%= button_to "#{t.number} - #{t.designation}", "/congregations/#{t.congregation_id}/territories/#{t.id}", :method => :get %>
       <%= "Signed out: #{t.sign_out_date} " %><br><br>
       <% end %>
-    <% end %>
-<br>
-<br>
-<br>
+    <% end %><br><br><br>
+
   <% if @publisher.user_id == current_user.id %>
     <%= button_to "Sign out a Territory", congregation_territories_path(@congregation.id), :method => :get %>
-  <%end%>
+  <% end %>
 <% end %>

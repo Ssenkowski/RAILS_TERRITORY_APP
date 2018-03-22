@@ -27,3 +27,7 @@
       <%end%>
 <br>
 **<i>If there are no available territories please talk to your territory servant.</i>**
+<% if current_user.admin %>
+  <strong><%= "As an administrator you can view or create the following:" %><br><br></strong>
+  Add a new territory: <%= button_to 'Add a territory', new_congregation_territory_path(params[:congregation_id]), :method => :get %><br>
+<% end %>

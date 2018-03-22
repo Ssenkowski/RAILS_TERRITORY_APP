@@ -6,9 +6,9 @@
 <% @bag %>
 <%= form_for [@congregation, @territory] do |f| %>
   <%= f.hidden_field :territory_id, :value => @territory.id %>
-    <% if @territory.signed_out == "false" || @territory.signed_out == nil %>
-    <%= f.submit 'Sign Out' %>
-    <% else %>
-    <%= f.submit 'Return', name: 'return_territory' %>
-    <% end %>
+      <% if @territory.signed_out == "false" || @territory.signed_out == nil %>
+      <%= f.submit 'Sign Out' %>
+      <% else %>
+      <%= f.submit 'Return', name: 'return_territory' %>
+      <% end %>
 <% end %>
