@@ -1,14 +1,12 @@
 <h3> <%= @territory.number %> - <%= @territory.designation %> </h3>
-<h5> <% @territory.street_names %> </h5>
 <img><%# image_tag("Territory6.png",  height: '400', width: '600') %></img>
 <br>
 <br>
-<% @bag %>
 <%= form_for [@congregation, @territory] do |f| %>
   <%= f.hidden_field :territory_id, :value => @territory.id %>
       <% if @territory.signed_out == "false" || @territory.signed_out == nil %>
       <%= f.submit 'Sign Out' %>
       <% else %>
-      <%= f.submit 'Return', name: 'return_territory' %>
+      <%= f.submit 'Return', name: 'return_territory', params: {'view_publisher_id' => @view_publisher.id} %>
       <% end %>
 <% end %>

@@ -37,6 +37,7 @@ class TerritoriesController < ApplicationController
   def show
     set_congregation
     set_publisher
+    set_view_publisher
     set_bag
     @territory = Territory.find_by_id(params[:id])
   end
@@ -53,6 +54,10 @@ class TerritoriesController < ApplicationController
 
       def set_publisher
         @publisher = Publisher.find_by_id(current_user.publisher_id)
+      end
+
+      def set_view_publisher
+        @view_publisher = Publisher.find_by_id(params[:view_publisher_id])
       end
 
       def set_bag

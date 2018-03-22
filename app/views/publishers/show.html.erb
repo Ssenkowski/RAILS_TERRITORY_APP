@@ -9,23 +9,23 @@
   <strong><%= @view_publisher.first_name %> <%= @view_publisher.last_name %>'s Current Territories: </strong><br><br>
     <% @view_publisher.territories.each do |t| %>
       <% if t.signed_out == "true" %>
-        <%= button_to"#{t.number} - #{t.designation}", "/congregations/#{t.congregation_id}/territories/#{t.id}", :method => :get %>
+        <%= button_to"#{t.number} - #{t.designation}", "/congregations/#{t.congregation_id}/territories/#{t.id}", params: {'view_publisher_id]' => @view_publisher.id}, :method => :get %>
         <%= "Signed out: #{t.sign_out_date} " %><br><br>
       <% end %>
     <% end %>
   <% else %>
-  <strong> Your current territories: </strong><br><br>
-  <% @territories = [] %>
-    <% @bag.territories.each do |t| %>
-      <% @territories << t %>
+    <strong> Your current territories: </strong><br><br>
+    <% @territories = [] %>
+      <% @bag.territories.each do |t| %>
+        <% @territories << t %>
       <% end %>
   <% @territories.uniq! %>
     <% @territories.each do |t| %>
       <% if t.signed_out == "true" %>
-      <%= button_to "#{t.number} - #{t.designation}", "/congregations/#{t.congregation_id}/territories/#{t.id}", :method => :get %>
-      <%= "Signed out: #{t.sign_out_date} " %><br><br>
+        <%= button_to "#{t.number} - #{t.designation}", "/congregations/#{t.congregation_id}/territories/#{t.id}", :method => :get %>
+        <%= "Signed out: #{t.sign_out_date} " %><br><br>
       <% end %>
-    <% end %><br><br><br>
+  <% end %><br><br><br>
 
   <% if @publisher.user_id == current_user.id %>
     <%= button_to "Sign out a Territory", congregation_territories_path(@congregation.id), :method => :get %>
