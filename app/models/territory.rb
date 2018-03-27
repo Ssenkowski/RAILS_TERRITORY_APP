@@ -19,11 +19,11 @@ class Territory < ApplicationRecord
     self.completed_date = DateTime.now
   end
 
-  def card_lost
+#  def card_lost
+#
+#  end
 
-  end
-
-  def recorded_in_book?
-
-  end
+#  def recorded_in_book?
+#
+#  end
 end

@@ -1,0 +1,60 @@
+Add streets to Territory:
+<%= form_for [@congregation, @territory] do |f| %>
+
+  <%if @territory.errors.any? %>
+    <div id="error_explanation">
+      <h3>
+        <%= pluralize(@territory.errors.count, "error") %>
+        prohibited this post from being saved:
+      </h3>
+        <ul>
+          <% @territory.errors.full_messages.each do |message| %>
+            <li><%= message %> </li>
+          <%end%>
+        </ul>
+      </div>
+  <%end%>
+
+  <% designations = ['Residential', 'Business', 'Writing'] %><br><br>
+    <%=f.label :number %>
+    <%=f.number_field :number %><br><br>
+    <%=f.label 'Territory Designation:' %>
+    <% designations.each do |designation| %>
+      <%= f.check_box :designation, { multiple: false}, designation, false %>
+      <%= f.label "#{designation}" %>
+    <% end %><br><br>
+
+  <%= f.fields_for :street_names do |str| %>
+    <%= str.label :street_name_1 %>
+    <%= str.text_field :street_name_1 %> <br>
+
+    <%= str.label :street_name_2 %>
+    <%= str.text_field :street_name_2 %> <br>
+
+    <%= str.label :street_name_3 %>
+    <%= str.text_field :street_name_3 %> <br>
+
+    <%= str.label :street_name_4 %>
+    <%= str.text_field :street_name_4 %> <br>
+
+    <%= str.label :street_name_5 %>
+    <%= str.text_field :street_name_5 %> <br>
+
+    <%= str.label :street_name_6 %>
+    <%= str.text_field :street_name_6 %> <br>
+
+    <%= str.label :street_name_7 %>
+    <%= str.text_field :street_name_7 %> <br>
+
+    <%= str.label :street_name_8 %>
+    <%= str.text_field :street_name_8 %> <br>
+
+    <%= str.label :street_name_9 %>
+    <%= str.text_field :street_name_9 %> <br>
+
+    <%= str.label :street_name_10 %>
+    <%= str.text_field :street_name_10 %> <br>
+
+    <%= f.submit "Add Territory"%>
+  <% end %>
+<%end%>

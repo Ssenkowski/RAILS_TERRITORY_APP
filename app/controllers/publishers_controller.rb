@@ -3,8 +3,6 @@ class PublishersController < ApplicationController
 
   def index
     @publishers = Publisher.all
-
-
   #  if Congregation.empty?
   #    redirect_to new_congregations_path
   #  else
@@ -31,7 +29,7 @@ class PublishersController < ApplicationController
         @publisher.save
         current_user.save
       else
-        flash[:notice] = "Please enter the correct email."
+        flash[:notice] = "Please enter the email you signed up with."
         redirect_to new_publisher_path
       end
       create_service_bag
