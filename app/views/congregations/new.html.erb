@@ -1,35 +1,3 @@
 <h2> Add a new Congregation </h2>
 
-<%= form_for @congregation do |f| %>
-
-  <% if @congregation.errors.any? %>
-  <div id="error_explanation">
-    <h3>
-      <%= pluralize(@congregation.errors.count, "error") %>
-      prohibited this post from being saved:
-    </h3>
-        <ul>
-          <% @congregation.errors.full_messages.each do |message| %>
-            <li><%= message %> </li>
-          <%end%>
-        </ul>
-      </div>
-  <%end%>
-
-  <%=f.label :name %>:
-  <%=f.text_field :name %>
-  <br><br>
-  <%=f.label :number %>:
-  <%=f.text_field :number %>
-  <br><br>
-  <%=f.label :address %>:
-  <%=f.text_field :address %>
-  <br><br>
-  <%=f.label :street %>:
-  <%=f.text_field :street %>
-  <br><br>
-  <%=f.label :meeting_times %>:
-  <%=f.text_field :meeting_times %>
-  <br><br>
-  <%= f.submit "Add Congregation"%>
-<%end%>
+<%= render "congregations/form" %>
