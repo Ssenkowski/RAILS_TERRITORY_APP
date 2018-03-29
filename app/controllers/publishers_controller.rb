@@ -3,11 +3,8 @@ class PublishersController < ApplicationController
 
   def index
     @publishers = Publisher.all
-  #  if Congregation.empty?
-  #    redirect_to new_congregations_path
-  #  else
-      render :index
-    #end
+
+    render :index
   end
 
   def new
@@ -55,7 +52,6 @@ class PublishersController < ApplicationController
     view_publisher
     set_congregation
     set_service_bag
-    #Display the current_user and congregation news throught the '_header' partial.
   end
 
   private

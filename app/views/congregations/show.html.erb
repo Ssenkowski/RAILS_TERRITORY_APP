@@ -5,5 +5,4 @@
 <% if current_user.admin %>
   Add a new territory: <%= button_to 'Add a territory', new_congregation_territory_path(@congregation.id), :method => :get %><br>
   View <%="#{@congregation.name}"%> congregation's publishers: <%= button_to 'View publishers', publishers_path, :method => :get %><br>
-
 <% end %>
