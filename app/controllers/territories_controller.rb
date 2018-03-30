@@ -16,11 +16,14 @@ class TerritoriesController < ApplicationController
 
   def create
     @territory = Territory.new(territory_params)
-    @territory.congregation_id = params[:congregation_id]
-    @territory.save
     set_congregation
+    @territory.congregation_id = params[:congregation_id]
+    if @territory.save
 
-    redirect_to "/congregations/#{@congregation.id}/territories"
+      redirect_to "/congregations/#{@congregation.id}/territories"
+    else
+      render "new"
+    end
   end
 
   def update
