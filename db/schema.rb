@@ -12,12 +12,12 @@
 
 ActiveRecord::Schema.define(version: 20180329174329) do
 
-  create_table "bags", force: :cascade do |t|
+  create_table "bags", force: :cascade do |t| #possibly better on the start to use Rails naming conventions change to publisher_territories table name
     t.integer "publisher_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "territory_id"
-    t.integer "number_of_territories"
+    t.integer "number_of_territories"  #not really needed    This whole table might be able to be encorporated into
   end
 
   create_table "congregations", force: :cascade do |t|
@@ -61,7 +61,7 @@ ActiveRecord::Schema.define(version: 20180329174329) do
     t.integer "address"
     t.string "street"
     t.string "note_symbol"
-    t.boolean "do_not_call?", default: false
+    t.boolean "do_not_call?", default: false #Database field names don't need alphanumeric characters
     t.text "notes"
     t.date "date"
     t.datetime "created_at", null: false
@@ -80,7 +80,7 @@ ActiveRecord::Schema.define(version: 20180329174329) do
     t.integer "congregation_id"
     t.string "first_name"
     t.string "last_name"
-    t.integer "service_group"
+    t.integer "service_group"  #service_group could be another model and this would become id
     t.datetime "your_saturday_field_service_group_start_time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -92,10 +92,10 @@ ActiveRecord::Schema.define(version: 20180329174329) do
   create_table "territories", force: :cascade do |t|
     t.integer "number"
     t.string "designation"
-    t.string "street_names"
+    t.string "street_names" #Display a list of streets associated with a territory that can be checked off as the territories worked.
     t.date "sign_out_date"
     t.date "completed_date"
-    t.boolean "card_lost?"
+    t.boolean "card_lost?"  #Report a card as lost to the adminstrator to reprint upon returning the card.
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "congregation_id"
@@ -118,7 +118,7 @@ ActiveRecord::Schema.define(version: 20180329174329) do
     t.datetime "updated_at", null: false
     t.string "provider"
     t.string "uid"
-    t.integer "publisher_id"
+    t.integer "publisher_id"  #Likely don't need this column already linking a publisher with a user_id field.
     t.boolean "admin"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
