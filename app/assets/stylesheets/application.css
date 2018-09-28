@@ -13,3 +13,109 @@
  *= require_tree .
  *= require_self
  */
+
+
+
+/*Spacing*/
+
+body {
+	max-width: 500px;
+    margin: auto;
+    text-align: center;
+    background-color: blue-grey;
+}
+
+div.field {
+	    margin-bottom: 15px;
+}
+
+div.actions {
+		margin-bottom: 15px;
+}
+
+
+/*Fonts*/
+
+a {
+	font-family: "Comic Sans MS", Comic, serif;
+}
+
+h2 {
+	font-family: "Comic Sans MS", Comic, serif;
+}
+
+
+/*form input styling*/
+
+.form_field {
+	border: 2px solid #00c0f9;
+    margin: 5px;
+    /*border-radius: 25px;*/
+    width: 200px;
+    margin-bottom: 20px;
+}
+
+.submit {
+	height:	66px;
+	width: 182px;
+	font-size: 16px;
+}
+
+#user_email {
+	border: 2px solid #00c0f9;
+    margin: 5px;
+    /*border-radius: 25px;*/
+    width: 200px;
+}
+
+#user_password {
+	border: 2px solid #00c0f9;
+    margin: 5px;
+    /*border-radius: 25px;*/
+    width: 200px;
+}
+
+#user_password_confirmation {
+	border: 2px solid #00c0f9;
+    margin: 5px;
+    /*border-radius: 25px;*/
+    width: 200px;
+}
+
+#congregation_name {
+	border: 2px solid #00c0f9;
+    margin: 5px;
+    /*border-radius: 25px;*/
+    width: 200px;
+}
+
+#congregation_number {
+	border: 2px solid #00c0f9;
+    margin: 5px;
+    /*border-radius: 25px;*/
+    width: 200px;
+}
+
+#congregation_address {
+	border: 2px solid #00c0f9;
+    margin: 5px;
+    /*border-radius: 25px;*/
+    width: 200px;
+}
+
+#congregation_street {
+	border: 2px solid #00c0f9;
+    margin: 5px;
+    /*border-radius: 25px;*/
+    width: 200px;
+}
+
+#congregation_meeting_times {
+	border: 2px solid #00c0f9;
+    margin: 5px;
+    /*border-radius: 25px;*/
+    width: 200px;
+}
+
+/* Territory Submit button */
+

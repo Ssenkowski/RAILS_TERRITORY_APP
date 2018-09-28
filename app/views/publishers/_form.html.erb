@@ -14,23 +14,23 @@
       </div>
   <%end%>
   <br>
-  <%=f.label :email %>
-  <%=f.email_field :email %>
+  <b><%=f.label :email %></b>
+  <%=f.email_field :email, :class => 'form_field' %>
   <br>
-  <%=f.label :username %>
-  <%=f.text_field :username %>
+  <b><%=f.label :username %></b>
+  <%=f.text_field :username, :class => 'form_field' %>
   <br>
-  <%=f.label :first_name %>
-  <%=f.text_field :first_name %>
+  <b><%=f.label :first_name %></b>
+  <%=f.text_field :first_name, :class => 'form_field' %>
   <br>
-  <%=f.label :last_name %>
-  <%=f.text_field :last_name %>
+  <b><%=f.label :last_name %></b>
+  <%=f.text_field :last_name, :class => 'form_field' %>
   <br>
-  <%=f.label :service_group %>
-  <%=f.number_field :service_group %>
+  <b><%=f.label :service_group %></b>
+  <%=f.number_field :service_group, :class => 'form_field' %>
   <br>
   <br>
-  If your congregation is not listed below please talk to your territory servant.<br><br>
+  <i>If your congregation is not listed below please talk to your territory servant.</i><br><br>
   <%=f.collection_check_boxes(:congregation_id, Congregation.all, :id, :name) %>
   <%= f.submit "Submit"%>
 <%end%>

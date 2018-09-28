@@ -15,19 +15,19 @@
   <%end%>
 
   <%=f.label :name %>:
-  <%=f.text_field :name %>
+  <%=f.text_field :name, :class => 'form_field' %>
   <br><br>
   <%=f.label :number %>:
-  <%=f.text_field :number %>
+  <%=f.text_field :number, :class => 'form_field' %>
   <br><br>
   <%=f.label :address %>:
-  <%=f.text_field :address %>
+  <%=f.text_field :address, :class => 'form_field' %>
   <br><br>
   <%=f.label :street %>:
-  <%=f.text_field :street %>
+  <%=f.text_field :street, :class => 'form_field' %>
   <br><br>
   <%=f.label :meeting_times %>:
-  <%=f.text_field :meeting_times %>
+  <%=f.text_field :meeting_times, :class => 'form_field' %>
   <br><br>
-  <%= f.submit "Add Congregation"%>
+  <%= f.submit "Add Congregation", :class => 'submit'%>
 <%end%>
